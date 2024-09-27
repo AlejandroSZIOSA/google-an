@@ -1,15 +1,16 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import Home from "./Home";
-import About from "./About";
-import { TRACKING_G_ID } from "./trackerKeys/keys";
+
+import { TRACKING_GTM_ID } from "./trackerKeys/keys";
 
 //2 Import ReactGa
 import ReactGa from "react-ga4";
+import ProductList from "./components/ProductList";
+import ProductPage from "./components/ProductPage";
 
 //2 USING ID FROM GOOGLE ANALYTICS
 //Start Tracking
-ReactGa.initialize(TRACKING_G_ID);
+ReactGa.initialize(TRACKING_GTM_ID);
 
 function App() {
   const location = useLocation();
@@ -22,8 +23,8 @@ function App() {
   }, [location]);
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
+      <Route path="/" element={<ProductList />} />
+      <Route path="/product/:id" element={<ProductPage />} />
     </Routes>
   );
 }
