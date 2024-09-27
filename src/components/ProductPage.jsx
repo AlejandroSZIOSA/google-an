@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PRODUCTS } from "./data";
+import { useNavigate } from "react-router-dom";
 
 function ProductPage() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const product = PRODUCTS.find((p) => p.id === id);
 
@@ -32,6 +34,7 @@ function ProductPage() {
       <p>Kategori: {product.category}</p>
       <p>Pris: {product.price} kr</p>
       <p>{product.description}</p>
+      <button onClick={() => navigate("..")}> Go back</button>
     </div>
   );
 }
